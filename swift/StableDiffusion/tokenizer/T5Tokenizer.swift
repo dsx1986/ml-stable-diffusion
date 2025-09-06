@@ -10,7 +10,7 @@ public extension Config {
     /// Assumes the file is already present at local url.
     /// `fileURL` is a complete local file path for the given model
     public init(fileURL: URL) throws  {
-        let data = try Data(contentsOf: fileURL)
+        let data = try Foundation.Data(contentsOf: fileURL)
         let parsed = try JSONSerialization.jsonObject(with: data, options: [])
         guard var dictionary = parsed as? [String: Any] else { throw Hub.HubClientError.parse }
         
