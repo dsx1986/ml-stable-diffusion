@@ -16,6 +16,6 @@ public extension Config {
         
         // Necessary override for loading local tokenizer configs
         dictionary["tokenizer_class"] = "T5Tokenizer"
-        self.init(dictionary)
+        self.init(dictionary as [NSString: Any])
     }
 }
