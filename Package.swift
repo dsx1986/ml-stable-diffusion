@@ -11,19 +11,19 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "StableDiffusion",
-            targets: ["StableDiffusion"]),
+            name: "AppleStableDiffusion",
+            targets: ["AppleStableDiffusion"]),
         .executable(
             name: "StableDiffusionSample",
             targets: ["StableDiffusionCLI"])
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-argument-parser.git", from: "1.2.3"),
-        .package(url: "https://github.com/huggingface/swift-transformers.git", exact: "0.1.8"),
+        .package(url: "https://github.com/huggingface/swift-transformers.git", from: "0.1.13"),
     ],
     targets: [
         .target(
-            name: "StableDiffusion",
+            name: "AppleStableDiffusion",
             dependencies:  [
                 .product(name: "Transformers", package: "swift-transformers"),
             ],
@@ -31,12 +31,12 @@ let package = Package(
         .executableTarget(
             name: "StableDiffusionCLI",
             dependencies: [
-                "StableDiffusion",
+                "AppleStableDiffusion",
                 .product(name: "ArgumentParser", package: "swift-argument-parser")],
             path: "swift/StableDiffusionCLI"),
         .testTarget(
             name: "StableDiffusionTests",
-            dependencies: ["StableDiffusion"],
+            dependencies: ["AppleStableDiffusion"],
             path: "swift/StableDiffusionTests",
             resources: [
                 .copy("Resources/vocab.json"),
